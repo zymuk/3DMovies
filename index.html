@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D Movies</title>
+  <meta property="og:title" content="3D Movies">
+  <meta property="og:description" content="Phim 3D do AI tạo — xem danh sách trên Facebook.">
+  <meta property="og:url" content="https://zymuk.github.io/3DMovies/">
+  <meta property="og:image" content="https://zymuk.github.io/3DMovies/assets/og-image.jpg">
+  <meta property="og:image:alt" content="3D Movies — thẻ thông tin tối giản, có tên trang và nút Xem danh sách phim trên Facebook.">
+  <!-- PENDING: chờ owner duyệt và ghi memlog có ngày mới chuyển LOCKED. -->
+  <link rel="icon" type="image/jpeg" href="assets/favicon.jpg">
+  <style>
+    /* Bảng token Thủy là nguồn màu duy nhất: mỗi token có giá trị sáng và giá trị tối.
+       Giá trị đã chốt — đổi phải có quyết định của owner. Khối dark bên dưới phải
+       phản chiếu đủ 7 token, nếu thiếu một token thì chế độ tối lệch màu. */
+    :root {
+      --surface-base: #F7F7F5;
+      --text-primary: #16324F;
+      --text-secondary: #5F7080;
+      --button: #4A789F;
+      --button-text: #FFFFFF;
+      --line: #C9D0D6;
+      --accent: #93A9B8; /* decorative-only, chưa dùng */
+
+      --font-title: serif;
+      --font-body: system-ui, sans-serif;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --radius-md: 4px;
+      --radius-sm: 2px;
+      --content-max: 480px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface-base: #0E1A26;
+        --text-primary: #E6EEF3;
+        --text-secondary: #9FB3C2;
+        --button: #5E8FB9;
+        --button-text: #0B1620;
+        --line: #2A3E4F;
+        --accent: #8AA7B9;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100svh; /* tránh card bị đẩy khỏi vùng nhìn khi Safari thu thanh địa chỉ */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-4);
+      background: var(--surface-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+    }
+
+    .screen {
+      width: 100%;
+      max-width: var(--content-max);
+    }
+
+    /* Hai đường kẻ hairline lồng nhau tạo độ sâu; không shadow/gradient/glow. */
+    .info-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      background: var(--surface-base);
+    }
+
+    .info-card-inner {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      background: var(--surface-base);
+    }
+
+    .page-title {
+      margin: 0 0 var(--space-3);
+      font-family: var(--font-title);
+      font-size: 1.625rem;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-primary);
+    }
+
+    .intro-copy {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      line-height: 1.65;
+      text-align: left;
+      color: var(--text-secondary);
+    }
+
+    /* Một native <a> duy nhất làm nút quay lại Page. Nhãn dài tự xuống dòng
+       trong cùng một nút; các state chỉ đổi màu/viền, không đổi bố cục. */
+    .primary-button {
+      display: block;
+      width: 100%;
+      min-height: 44px;
+      margin-top: var(--space-5);
+      padding: var(--space-3);
+      border-radius: var(--radius-sm);
+      background: var(--button);
+      color: var(--button-text);
+      text-align: left;
+      text-decoration: none;
+    }
+
+    .primary-button:visited {
+      color: var(--button-text);
+    }
+
+    .primary-button:focus-visible {
+      outline: 2px solid var(--text-primary);
+      outline-offset: 2px;
+    }
+
+    /* Cụm ẩn chỉ góp vào accessible name, không chiếm chỗ hiển thị. */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="screen">
+    <div class="info-card">
+      <div class="info-card-inner">
+        <h1 class="page-title">3D Movies</h1>
+        <!-- FR-1: chuỗi LOCKED — giữ nguyên, kể cả khi đăng phim mới. -->
+        <p class="intro-copy">3D Movies là trang chia sẻ phim 3D do AI tạo. Danh sách phim đang được cập nhật trên Facebook.</p>
+        <a class="primary-button" href="https://www.facebook.com/profile.php?id=61596498960910" target="_blank" rel="noopener">Xem danh sách phim trên Facebook<span class="sr-only"> (mở trong tab mới)</span></a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
